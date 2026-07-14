@@ -604,6 +604,14 @@ body {
   border-color: var(--color-primary);
 }
 
+.api-input.error-placeholder::placeholder {
+  color: #ff6b6b;
+}
+
+.api-input.error-placeholder {
+  border-color: #ff6b6b;
+}
+
 .api-link {
   display: inline-block;
   color: var(--color-primary);

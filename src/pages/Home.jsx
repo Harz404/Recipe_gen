@@ -56,6 +56,7 @@ export default function Home() {
     
     if (!userApiKey.trim()) {
       setApiKeyErrorGlow(true);
+      setShowApiKeyModal(true);
       setTimeout(() => setApiKeyErrorGlow(false), 3000);
       return;
     }
@@ -173,8 +174,8 @@ export default function Home() {
             <h3><KeyRound size={20} /> API Settings</h3>
             <input 
               type="password" 
-              className="api-input"
-              placeholder="Paste Gemini API key..."
+              className={`api-input ${apiKeyErrorGlow ? 'error-placeholder' : ''}`}
+              placeholder={apiKeyErrorGlow ? "Please enter your API key first!" : "Paste Gemini API key..."}
               value={userApiKey}
               onChange={(e) => {
                 setUserApiKey(e.target.value);
@@ -189,14 +190,7 @@ export default function Home() {
         )}
       </div>
       
-      {apiKeyErrorGlow && (
-        <div className="error-popup">
-          <span>First enter your API key here!</span>
-          <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer">
-            (Don't have one? Create it here)
-          </a>
-        </div>
-      )}
+
 
       {isLoading && (
         <div className="loading-overlay">
